@@ -44,8 +44,12 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 	// configuração de autorização
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/user").permitAll().antMatchers(HttpMethod.POST, "/auth")
-				.permitAll().antMatchers(HttpMethod.DELETE, "/user/*").hasRole("MODERADOR").anyRequest().authenticated()
+		http.authorizeRequests()
+				.antMatchers(HttpMethod.GET, "/user").permitAll()
+				.antMatchers(HttpMethod.POST, "/user").permitAll()
+				.antMatchers(HttpMethod.POST, "/auth").permitAll()
+				.antMatchers(HttpMethod.DELETE, "/user/*").hasRole("MODERADOR")
+				.anyRequest().authenticated()
 				.and().cors().and().csrf().disable().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 				.addFilterBefore(new TokenAuthenticationFilter(tokenService, userRepository),
