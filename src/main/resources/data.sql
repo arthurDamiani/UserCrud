@@ -2,4 +2,4 @@ INSERT INTO USER(name, email, password) VALUES('Damiani', 'arthur.damiani@gmail.
 
 INSERT INTO PROFILE(id, name) VALUES(1, 'ROLE_MODERADOR');
 
-INSERT INTO USER_PROFILES(user_id, profiles_id) VALUES(1,2);
+INSERT INTO USER_PROFILES(user_id, profiles_id) VALUES(1,1);
